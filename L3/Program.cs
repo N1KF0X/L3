@@ -11,12 +11,12 @@ namespace L3
         static void Main(string[] args)
         {
             int day = Convert.ToInt32(Console.ReadLine());
-            Week dayOfWeek = (Week)day;
+            Week dayOfWeek = (Week)day - 1;
             int time = Convert.ToInt32(Console.ReadLine());
-            Time timeOfWeek = Time.Утро;
+            Time timeOfWeek;
 
             string dow;
-            string tow = "\"Неверный формат\"";
+            string tow;
 
             switch (dayOfWeek)
             {
@@ -48,20 +48,22 @@ namespace L3
 
             if (time >= 7 && time <= 12)
             {
-                timeOfWeek = Time.Утро;
+                time = 0;
             }
             else if (time >= 13 && time <= 18)
             {
-                timeOfWeek = Time.День;
+                time = 1;
             }
             else if (time >= 19 && time <= 23)
             {
-                timeOfWeek = Time.Вечер;
+                time = 2;
             }
             else if (time >= 0 && time <= 6) 
             {
-                timeOfWeek = Time.Ночь;
+                time = 3;
             }
+
+            timeOfWeek = (Time) time;
 
             switch (timeOfWeek)
             {
@@ -76,6 +78,9 @@ namespace L3
                     break;
                 case Time.Ночь:
                     tow = "Ночь";
+                    break;
+                default:
+                    tow = "\"Неверный формат\"";
                     break;
             }
 
